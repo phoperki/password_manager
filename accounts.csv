@@ -1,4 +1,4 @@
-account,username,password
-default,default,password1234
-club_penguin,pperk,password2345
-spotify,foo,bar
+account,username,password,strength
+default,default,password1234,weak
+utulsa,plp7686,thisisastrongPassword123!,Strong
+google,googperk,googPerk123!,Weak
