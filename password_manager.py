@@ -1,5 +1,5 @@
 import csv
-
+import random
 
 # 1. View Stored Accounts
 def read_accounts():
@@ -96,6 +96,23 @@ def search_for_account(account):
     return "Account not found"
 
 
+def generate_password(length=int):
+
+    # From a string of the alphabet special characters and numbers, loop through however many times length is. 
+    # Append to end of password
+    alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    nums = "0123456789"
+    specialchars = "@#~!%^&*(())"
+    password = ""
+
+    while len(password) < length:
+        password = password + random.choice(alpha)
+        password = password + random.choice(nums)
+        password = password + random.choice(specialchars)
+    
+    return password
+
+
 # 3. Add a menu
 def menu():
     print("Welcome to Pperk's Pass Man")
@@ -112,7 +129,13 @@ def menu():
         elif x == 2:
             account = input("What is the account: ")
             username = input("What is the username: ")
-            password = input("What is the password: ")
+            user_random = input("Do you want a random password? (yes/no)").lower()
+            
+            if user_random == "yes":
+                length = int(input("How long do you want it? (12 is strong): "))
+                password = generate_password(length)
+            elif user_random == "no":
+                password = input("What is the password: ")
             add_account(account, username, password)
         elif x == 3:
             account = input("What is the account: ")
